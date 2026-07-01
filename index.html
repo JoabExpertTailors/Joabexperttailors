@@ -398,6 +398,91 @@
     margin: 0 15px;
   }
 }
+footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+footer h2 {
+  margin-bottom: 15px;
+  color: #f1c40f; /* Accent color for headings */
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 1em;
+}
+
+footer a {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* WhatsApp link styling */
+.whatsapp-link {
+  color: #25D366; /* WhatsApp green */
+  font-weight: bold;
+}
+
+.whatsapp-link:hover {
+  text-decoration: underline;
+}
+#booking {
+  background: #f9f9f9;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+#booking h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+form input, form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+form input[type="submit"] {
+  background-color: #004080;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1.1em;
+  transition: background 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: #0066cc;
+}
   </style>
 </head>
 <body>
@@ -495,7 +580,6 @@
       "Excellent service, timely delivery, and unmatched expertise." – Daniel O.
     </blockquote>
   </section>
-
   <section id="booking">
     <h2>Book an Appointment</h2>
     <form action="mailto:info@joabexpertailors.com" method="post" enctype="text/plain">
@@ -518,16 +602,45 @@
       <input type="submit" value="Book Now">
     </form>
   </section>
+
  <footer>
   <section id="contact">
     <h2>Contact Us</h2>
-    <p>Visit us in Kampala, Uganda or reach out via phone at <strong>+256 700 123456</strong>.</p>
-    <p>Email: <strong>joabexpertailors@gmail.com</strong></p>
+    <p>
+      Visit us in <strong>Rubuguri Town Council, Kisoro, Uganda</strong> or reach out via phone at 
+      <strong><a href="tel:+256755370787">+256 755 370787</a></strong>.
+    </p>
+    <p>
+      Email: <strong><a href="mailto:joabexpertailors@gmail.com">joabexpertailors@gmail.com</a></strong>
+    </p>
+    <p>
+      WhatsApp: 
+      <strong>
+        <a href="https://wa.me/256784189990" target="_blank" class="whatsapp-link">
+          Chat with us on WhatsApp
+        </a>
+      </strong>
+    </p>
   </section>
 
- 
-    <p>&copy; 2026 JOAB Expert Tailors. All rights reserved.</p>
-  </footer>
+  <p>&copy; 2026 JOAB Expert Tailors. All rights reserved.</p>
+</footer>
+<script>
+  const bookingForm = document.querySelector('#booking form');
+
+  bookingForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent default mailto behavior
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const service = document.getElementById('service').value;
+    const date = document.getElementById('date').value;
+
+    alert(`Thank you, ${name}! Your booking for ${service} on ${date} has been received. We will contact you at ${email}.`);
+    
+    bookingForm.reset(); // clear form after submission
+  });
+</script>
   <script>
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
