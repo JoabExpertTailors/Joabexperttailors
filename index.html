@@ -245,10 +245,18 @@
   background:white;
   transform:translateY(-4px);
 }
+/* Header actions container */
+.header-actions {
+  display: flex;
+  justify-content: space-between; /* search left, hamburger right */
+  align-items: center;
+  background-color: #34495e;
+  padding: 10px 20px;
+}
+
 /* ===== SEARCH ===== */
 .search-container {
   position: relative;
-  display: inline-block;
 }
 
 #searchBtn {
@@ -263,7 +271,7 @@
 #searchBox {
   position: absolute;
   top: 45px;
-  right: 0;
+  left: 0; /* appears under the search button */
   background: white;
   padding: 10px;
   border-radius: 8px;
@@ -290,17 +298,106 @@
   display: none !important;
 }
 
-/* Responsive tweak */
-@media (max-width: 768px) {
-  #searchInput {
-    width: 100%;
-    margin-bottom: 8px;
-  }
-  #runSearch {
-    width: 100%;
-  }
+/* ===== HAMBURGER ===== */
+.menu-toggle {
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
 }
 
+.nav-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #34495e;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-links a {
+    margin: 10px 0;
+    padding: 10px;
+    border-top: 1px solid #2c3e50;
+    color: white;
+    text-decoration: none;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+}
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #34495e;
+  padding: 10px 20px;
+}
+
+/* Search */
+.search-container {
+  position: relative;
+}
+#searchBtn {
+  border: none;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+#searchBox {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+.hidden {
+  display: none !important;
+}
+
+/* Hamburger + Close */
+.menu-toggle, .close-toggle {
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
+}
+
+/* Nav links */
+.nav-links {
+  background-color: #34495e;
+  text-align: center;
+}
+.nav-links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-top: 1px solid #2c3e50;
+}
+
+/* Responsive */
+@media (min-width: 769px) {
+  .menu-toggle, .close-toggle {
+    display: none;
+  }
+  .nav-links {
+    display: flex !important;
+    justify-content: center;
+  }
+  .nav-links a {
+    border: none;
+    margin: 0 15px;
+  }
+}
   </style>
 </head>
 <body>
@@ -309,34 +406,33 @@
         📢 Open from monday to monday 24/7 and a 20% Discount
     </marquee>
 </div>  
+<header>
+  <div class="header-actions">
+    <!-- Search on the left -->
+    <div class="search-container">
+      <button id="searchBtn">🔍</button>
+      <div id="searchBox" class="hidden">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button id="runSearch">Go</button>
+      </div>
+    </div>
 
-
-  <header>
-    <div class="header-actions">
-  <div class="search-container">
-    <button id="searchBtn">🔍</button>
-
-    <div id="searchBox" class="hidden">
-      <input type="text" id="searchInput" placeholder="Search...">
-      <button id="runSearch">Go</button>
+    <!-- Hamburger on the right -->
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#booking">Booking</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
-</div>
     <h1>JOAB Expert Tailors</h1>
     <p>From fabric to fashion expertly done</p>
-  
-<nav>
-  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-  <div class="nav-links" id="nav-links">
-    <a href="#about">About Us</a>
-    <a href="#services">Services</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#booking">Booking</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+ 
 
+</header>
 <section class="hero">
     <div class="hero-content">
       <h3>Welcome to your all times fashions</h3>
@@ -458,6 +554,41 @@
   // Example search action
   runSearch.addEventListener('click', () => {
     alert("Searching for: " + searchInput.value);
+  });
+</script>
+<script>
+  // Search toggle
+  const searchBtn = document.getElementById('searchBtn');
+  const searchBox = document.getElementById('searchBox');
+  const searchInput = document.getElementById('searchInput');
+  const runSearch = document.getElementById('runSearch');
+
+  searchBtn.addEventListener('click', () => {
+    searchBox.classList.toggle('hidden');
+    if (!searchBox.classList.contains('hidden')) {
+      searchInput.focus();
+    }
+  });
+
+  runSearch.addEventListener('click', () => {
+    alert("Searching for: " + searchInput.value);
+  });
+
+  // Hamburger toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const closeToggle = document.getElementById('close-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.remove('hidden');
+    menuToggle.classList.add('hidden');
+    closeToggle.classList.remove('hidden');
+  });
+
+  closeToggle.addEventListener('click', () => {
+    navLinks.classList.add('hidden');
+    menuToggle.classList.remove('hidden');
+    closeToggle.classList.add('hidden');
   });
 </script>
 </body>
