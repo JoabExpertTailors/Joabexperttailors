@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JOAB Expert Tailors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: url('hero-banner.jpg') no-repeat center center/cover;
+      color: blue;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+    header p {
+      font-style: italic;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+    nav {
+      background-color: #34495e;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 40px;
+      text-align: center;
+    }
+    section h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    .services, .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .service, .gallery-item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 250px;
+      margin: 15px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .gallery-item img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    blockquote {
+      background: #ecf0f1;
+      border-left: 5px solid #2c3e50;
+      margin: 20px auto;
+      padding: 15px;
+      max-width: 600px;
+      font-style: italic;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      text-align: left;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form input[type="submit"] {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    form input[type="submit"]:hover {
+      background-color: #34495e;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+    /* Mobile responsiveness */
+@media (max-width: 768px) {
+  header {
+    padding: 40px 10px;
+  }
+  header h1 {
+    font-size: 2em;
+  }
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a {
+    margin: 8px 0;
+  }
+  .services, .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+  .service, .gallery-item {
+    width: 90%;
+  }
+  section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+  header p {
+    font-size: 1em;
+  }
+  form input, form select {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+}
+/* Hamburger button */
+.menu-toggle {
+  display: none;
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #34495e;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-links a {
+    margin: 10px 0;
+    padding: 10px;
+    border-top: 1px solid #2c3e50;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+}
+/* ===== ANNOUNCEMENT ===== */
+.announcement-bar {
+  background:lightblue;
+  color:green;
+  text-align:center;
+  padding:12px;
+  font-weight:bold;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.announcement {
+  background:#008000;
+  color:white;
+  padding:12px;
+  font-weight:bold;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(rgba(0,50,120,0.75), rgba(0,50,120,0.75)),
+              url("images/school.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h3 {
+  color:#FFD700;
+  font-size:1.4rem;
+}
+
+.hero h1 {
+  font-size:3rem;
+  margin:15px 0;
+}
+
+.hero p {
+  font-size:1.3rem;
+  font-style:italic;
+  margin-bottom:30px;
+}
+
+.hero-btn {
+  display:inline-block;
+  padding:15px 40px;
+  background:linear-gradient(135deg,#FFD700,#ffb300);
+  color:#003366;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  transition:0.3s ease;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.hero-btn:hover {
+  background:white;
+  transform:translateY(-4px);
+}
+/* ===== SEARCH ===== */
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+#searchBtn {
+  border: none;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#searchBox {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+#searchInput {
+  padding: 8px;
+  width: 200px;
+}
+
+#runSearch {
+  padding: 8px 12px;
+  background: #004080;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  #searchInput {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  #runSearch {
+    width: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+    <div class="announcement">
+    <marquee>
+        📢 Open from monday to monday 24/7 and a 20% Discount
+    </marquee>
+</div>  
+
+
+  <header>
+    <div class="header-actions">
+  <div class="search-container">
+    <button id="searchBtn">🔍</button>
+
+    <div id="searchBox" class="hidden">
+      <input type="text" id="searchInput" placeholder="Search...">
+      <button id="runSearch">Go</button>
+    </div>
+  </div>
+</div>
+    <h1>JOAB Expert Tailors</h1>
+    <p>From fabric to fashion expertly done</p>
+  
+<nav>
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  <div class="nav-links" id="nav-links">
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#booking">Booking</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+      <h3>Welcome to your all times fashions</h3>
+      <h1>JOAB EXPERT TAILORS</h1>
+      
+      </div>
+</section>
+</header>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>At JOAB Expert Tailors, we specialize in mending suits and designing all types of fabric with precision and creativity. Our passion is turning fabric into fashion that speaks elegance and expertise.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Suit Mending</h3>
+        <p>Professional repair and adjustments for suits to restore their perfect fit and look.</p>
+      </div>
+      <div class="service">
+        <h3>Fabric Design</h3>
+        <p>Custom designs tailored to your style, from traditional to modern fashion trends.</p>
+      </div>
+      <div class="service">
+        <h3>Alterations</h3>
+        <p>Precise alterations for all garments ensuring comfort and elegance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <p>Explore some of our finest tailoring and fabric design work.</p>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="tailored.webp" alt="Tailored Suit">
+        <p>Elegant suit mending</p>
+      </div>
+      <div class="gallery-item">
+        <img src="custom.jpg" alt="Custom Dress">
+        <p>Custom dress design</p>
+      </div>
+      <div class="gallery-item">
+        <img src="fabric.jpeg" alt="Fabric Design">
+        <p>Creative fabric patterns</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>Customer Testimonials</h2>
+    <blockquote>
+      "JOAB Expert Tailors transformed my old suit into something brand new. Truly professional work!" – Michael K.
+    </blockquote>
+    <blockquote>
+      "Their fabric designs are unique and stylish. I always get compliments when I wear their creations." – Sarah N.
+    </blockquote>
+    <blockquote>
+      "Excellent service, timely delivery, and unmatched expertise." – Daniel O.
+    </blockquote>
+  </section>
+
+  <section id="booking">
+    <h2>Book an Appointment</h2>
+    <form action="mailto:info@joabexpertailors.com" method="post" enctype="text/plain">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="service">Service Needed:</label>
+      <select id="service" name="service">
+        <option value="suit_mending">Suit Mending</option>
+        <option value="fabric_design">Fabric Design</option>
+        <option value="alterations">Alterations</option>
+      </select>
+
+      <label for="date">Preferred Date:</label>
+      <input type="date" id="date" name="date">
+
+      <input type="submit" value="Book Now">
+    </form>
+  </section>
+ <footer>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Visit us in Kampala, Uganda or reach out via phone at <strong>+256 700 123456</strong>.</p>
+    <p>Email: <strong>joabexpertailors@gmail.com</strong></p>
+  </section>
+
+ 
+    <p>&copy; 2026 JOAB Expert Tailors. All rights reserved.</p>
+  </footer>
+  <script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+  
+</script>
+<script>
+  const searchBtn = document.getElementById('searchBtn');
+  const searchBox = document.getElementById('searchBox');
+  const searchInput = document.getElementById('searchInput');
+  const runSearch = document.getElementById('runSearch');
+
+  // Toggle search box visibility
+  searchBtn.addEventListener('click', () => {
+    searchBox.classList.toggle('hidden');
+    if (!searchBox.classList.contains('hidden')) {
+      searchInput.focus();
+    }
+  });
+
+  // Example search action
+  runSearch.addEventListener('click', () => {
+    alert("Searching for: " + searchInput.value);
+  });
+</script>
+</body>
+</html>
